@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 interface user {
   name: string;
   email: string;
-  password: string;
+  occupation: string;
   phoneNum: number;
   address: string;
 }
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema<user>({
     type: String,
     required: [true, "please enter your email"],
   },
-  password: {
+  occupation: {
     type: String,
     required: [true, "please enter your email"],
   },
@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema<user>({
   },
   address: {
     type: String,
+      required: [true, "please enter your address"],
   },
 });
 
