@@ -7,13 +7,17 @@ interface user {
   email: string;
   MembershipNumber: string;
   memberImage : string
-
+password : string
 }
 
 interface Iuser extends user, mongoose.Document {}
 
 const userSchema = new mongoose.Schema({
   fullName: {
+    type: String,
+    required: [true, "please enter your name"],
+  },
+  password: {
     type: String,
     required: [true, "please enter your name"],
   },

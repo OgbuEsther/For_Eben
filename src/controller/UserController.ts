@@ -37,13 +37,23 @@ export const getOneUser = async (req: Request, res: Response) => {
 //create a user
 export const newUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, phoneNum, address } = req.body;
-    const users = await UserModel.create({
-      name,
+    const {
+      fullName,
       email,
       password,
-      phoneNum,
-      address,
+      businessName,
+      businessContact,
+      MembershipNumber,
+      memberImage,
+    } = req.body;
+    const users = await UserModel.create({
+      fullName,
+      email,
+      password,
+      businessName,
+      businessContact,
+      MembershipNumber,
+      memberImage,
     });
 
     return res.status(200).json({
