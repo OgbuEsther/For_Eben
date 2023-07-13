@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import UserModel from "../model/UserModel";
+import cloudinary from "../config/cloudinary";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -46,14 +47,17 @@ export const newUser = async (req: Request, res: Response) => {
       MembershipNumber,
       memberImage,
     } = req.body;
+
+    const imageUploader = await cloudinary.uploader?.upload(req?.file!.path);
+
     const users = await UserModel.create({
       fullName,
       email,
       password,
       businessName,
       businessContact,
-      MembershipNumber,
-      memberImage,
+      MembershipNumber : getAllUsers?.length + 1,
+      memberImage : imageUploader?.secure_url,
     });
 
     return res.status(200).json({
