@@ -76,12 +76,12 @@ export const newUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, phoneNum, address } = req.body;
+    const { fullName, businessName, businessContact, memberImage } = req.body;
     const getUser = await UserModel.findById(req.params.userId);
 
     const users = await UserModel.findByIdAndUpdate(
       getUser?._id,
-      { name, email, password, phoneNum, address },
+      { fullName, businessName, businessContact, memberImage},
       { new: true }
     );
 
