@@ -1,16 +1,20 @@
 import mongoose from "mongoose";
 
 interface user {
-  name: string;
+  fullName: string;
+  businessName : string;
+  businessContact : string
   email: string;
   occupation: string;
   phoneNum: number;
   address: string;
+  memberImage : string
+
 }
 
 interface Iuser extends user, mongoose.Document {}
 
-const userSchema = new mongoose.Schema<user>({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "please enter your name"],
