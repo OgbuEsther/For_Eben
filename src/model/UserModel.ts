@@ -5,9 +5,7 @@ interface user {
   businessName : string;
   businessContact : string
   email: string;
-  occupation: string;
-  phoneNum: number;
-  address: string;
+  MembershipNumber: string;
   memberImage : string
 
 }
@@ -15,26 +13,31 @@ interface user {
 interface Iuser extends user, mongoose.Document {}
 
 const userSchema = new mongoose.Schema({
-  name: {
+  fullName: {
     type: String,
     required: [true, "please enter your name"],
+  },
+  memberImage: {
+    type: String,
+    required: [true, "please enter an image"],
+  },
+  businessName: {
+    type: String,
+    required: [true, "please enter your business name"],
   },
   email: {
     type: String,
     required: [true, "please enter your email"],
   },
-  occupation: {
+  businessContact: {
     type: String,
-    required: [true, "please enter your email"],
+    required: [true, "please enter your business Contact"],
   },
-  phoneNum: {
+  MembershipNumber: {
     type: Number,
-    required: [true, "please enter your number"],
+   
   },
-  address: {
-    type: String,
-      required: [true, "please enter your address"],
-  },
+ 
 });
 
 
